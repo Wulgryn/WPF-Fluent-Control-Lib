@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPF_Fluent_Control_Lib.Styles.FluentWindow">
+    <Style TargetType="{x:Type Window}" x:Key="FluentWindowStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="IsHitTestVisible" Value="True"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="local:WindowAttachedProperties.OnLoaded" Value="{x:Static local:FluentWindowHandlers.OnWindowLoaded}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Window">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="10,10,10,10">
+                        <Grid x:Name="grid" Background="#02000000"
+                              SnapsToDevicePixels="true"
+                              HorizontalAlignment="Stretch" 
+                              VerticalAlignment="Stretch">
+                            <Grid x:Name="TitleBar" 
+                                  VerticalAlignment="Top"
+                                  Height="30"
+                                  Background="#4C000000">
+
+                            </Grid>
+                            <ContentPresenter Focusable="False"
+                            Margin="{TemplateBinding Padding}"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CornerRadius="5" CaptionHeight="30"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
